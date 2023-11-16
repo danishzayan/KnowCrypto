@@ -8,8 +8,9 @@ export default {
     },
 
     colors: {
-      gray: { 100: "#808080", 200: "#323232", 300: "#212121" },
+      gray: { 100: "#808080", 200: "#323232", 300: "#0f172a" },
       white: "#fff",
+      // bgGray: "#212121",
       // cyan: "#14ffec",
       lightgreen: "#00ff00",
       red: "#d6436e",
