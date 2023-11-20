@@ -23,7 +23,6 @@ export const CryptoProvider = ({ children }) => {
     }
   };
 
-//   console.log("data is here===>", cryptoData);
   useLayoutEffect(() => {
     getCryptoData()
   }, [])
