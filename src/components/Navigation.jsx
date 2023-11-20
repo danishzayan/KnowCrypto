@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="w-[40%] mt-16 flex justify-around align-middle border border-lightgreen rounded-lg">
+    <nav className="w-[80%] mt-16 flex justify-around align-middle border border-lightgreen rounded-lg">
       <NavLink
         to="/"
         end
+        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                 ${
@@ -22,6 +23,7 @@ const Navigation = () => {
 
       <NavLink
         to="/trending"
+        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                   ${
@@ -37,6 +39,7 @@ const Navigation = () => {
 
       <NavLink
         to="/saved"
+        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                   ${
