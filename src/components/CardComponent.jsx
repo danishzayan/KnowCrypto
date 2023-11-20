@@ -12,7 +12,7 @@ const CardComponent = () => {
               <div className="flex items-center border overflow-hidden absolute rounded-full py-[1px] px-[1px] shadow-xl bg-lightgreen left-4 -top-7">
                 <img
                   src={data.image}
-                  className="w-[3.3rem] h-[3.3rem] object-cover"
+                  className="w-[3.3rem] h-[3.3rem] object-cover rounded-[50%]"
                   alt={data.id}
                 />
               </div>
@@ -40,7 +40,12 @@ const CardComponent = () => {
                 </dinv>
                 <div className="flex justify-between text-[1.2rem]">
                   <p className="text-gray-100 font-semibold">Price:</p>
-                  <p className="text-green font-bold">{data.current_price}</p>
+                  <p className="text-green font-bold">
+                    {new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "usd",
+                    }).format(data.current_price)}
+                  </p>
                 </div>
                 <div className="flex justify-between text-[1rem]">
                   <p className="text-gray-100 font-semibold">Market Cap:</p>
@@ -50,26 +55,52 @@ const CardComponent = () => {
                 </div>
                 <div className="flex justify-between text-[1rem]">
                   <p className="text-gray-100 font-semibold">1H:</p>
-                  <p className={`text-[15px] ${ data.price_change_percentage_1h_in_currency > 0 ? 'text-green' : 'text-red'}`}>
-                    {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
+                  <p
+                    className={`text-[15px] ${
+                      data.price_change_percentage_1h_in_currency > 0
+                        ? "text-green"
+                        : "text-red"
+                    }`}
+                  >
+                    {Number(
+                      data.price_change_percentage_1h_in_currency
+                    ).toFixed(2)}
                   </p>
                 </div>
                 <div className="flex justify-between text-[1rem]">
                   <p className="text-gray-100 font-semibold">24H:</p>
-                  <p className={`text-[15px] ${ data.price_change_percentage_24h_in_currency > 0 ? 'text-green' : 'text-red'}`}>
-                    {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
+                  <p
+                    className={`text-[15px] ${
+                      data.price_change_percentage_24h_in_currency > 0
+                        ? "text-green"
+                        : "text-red"
+                    }`}
+                  >
+                    {Number(
+                      data.price_change_percentage_24h_in_currency
+                    ).toFixed(2)}
                   </p>
                 </div>
                 <div className="flex justify-between text-[1rem]">
                   <p className="text-gray-100 font-semibold">7D:</p>
-                  <p className={`text-[15px] ${ data.price_change_percentage_7d_in_currency > 0 ? 'text-green' : 'text-red'}`}>
-                    {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
+                  <p
+                    className={`text-[15px] ${
+                      data.price_change_percentage_7d_in_currency > 0
+                        ? "text-green"
+                        : "text-red"
+                    }`}
+                  >
+                    {Number(
+                      data.price_change_percentage_7d_in_currency
+                    ).toFixed(2)}
                   </p>
                 </div>
                 <div className="border-t-2 border-gray-200 mt-2"></div>
                 <div className="flex justify-between mt-2 ">
                   <p className="font-semibold text-[.9rem]">Total Volume:</p>
-                  <p className="font-semibold text-[.9rem]">{data.total_volume}</p>
+                  <p className="font-semibold text-[.9rem]">
+                    {data.total_volume}
+                  </p>
                 </div>
               </div>
             </div>
