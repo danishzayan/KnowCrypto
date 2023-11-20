@@ -15,10 +15,11 @@ const CardComponent = () => {
         <div className="mt-3">
           <div className="flex flex-row justify-between items-center">
           <p className="text-[1.5rem] font-semibold  my-2">Bitcoin</p>
-          <p className="text-[1.4rem] text-[red] bg-white p-1">❤</p>
+          <p className="text-[1.4rem] text-[red]">❤</p>
           </div>
-          <div className="flex space-x-2 text-gray-400 text-sm">
-            <p>Marketing Team</p>
+          <div className="flex justify-between text-[1rem]">
+            <p className='text-gray-100 font-semibold'>Price:</p>
+            <p className='text-green font-bold'>$156.00</p>
           </div>
           <div className="flex space-x-2 text-gray-400 text-sm my-3">
             <p>1 Weeks Left</p>
