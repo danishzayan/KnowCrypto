@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SearchIcon from "../assets/search-icon.svg";
+import { CryptoContext } from "../context/CryptoContext";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
+  const { getSearchResult } = useContext(CryptoContext);
 
   const handleChange = (e) => {
     e.preventDefault();
     let query = e.target.value;
     setSearchText(query);
-    console.log(query);
+    getSearchResult(query);
+    // console.log(query);
   };
 
   return (

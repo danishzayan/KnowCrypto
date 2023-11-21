@@ -4,10 +4,13 @@ import { createContext, useLayoutEffect, useState } from "react";
 // creating context object
 export const CryptoContext = createContext({});
 
-// creating the provider component
+// creating the context provider component for passing the data
 export const CryptoProvider = ({ children }) => {
-  const [cryptoData, setCryptoData] = useState();
 
+  const [cryptoData, setCryptoData] = useState();
+  const [searchData, setSearchData] = useState();
+
+  // Calling api for cryptoData 
   const getCryptoData = async () => {
     try {
       const data = await axios
@@ -23,11 +26,26 @@ export const CryptoProvider = ({ children }) => {
     }
   };
 
+  // Calling api for searching data
+  const getSearchResult = async (query) => {
+    try {
+      const data = await axios
+        .get(
+          `https://api.coingecko.com/api/v3/search?query=${query}`
+        )
+        .then((response) => {
+          setSearchData(response.data)
+          console.log('result ==>', response.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useLayoutEffect(() => {
-    getCryptoData()
+    getCryptoData();
+    // getSearchResult();
   }, [])
 
-  return <CryptoContext.Provider value={{cryptoData}}>{children}</CryptoContext.Provider>;
+  return <CryptoContext.Provider value={{cryptoData, searchData, getSearchResult}}>{children}</CryptoContext.Provider>;
 };
-
-// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=16&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en
