@@ -5,7 +5,7 @@ const CardComponent = () => {
   const { cryptoData } = useContext(CryptoContext);
   console.log("data is here==>", cryptoData);
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center mt-12">
       {cryptoData
         ? cryptoData.map((data) => (
             <div className="relative border border-lightgreen py-4 px-6 rounded-3xl w-64 my-4 shadow-xl">
@@ -26,6 +26,7 @@ const CardComponent = () => {
                   </p>
                   <button className="outline-0 border-0 bg-none cursor-pointer">
                     <svg
+                      
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
                       height="21"

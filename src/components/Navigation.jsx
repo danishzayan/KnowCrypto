@@ -7,7 +7,6 @@ const Navigation = () => {
       <NavLink
         to="/"
         end
-        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                 ${
@@ -23,7 +22,6 @@ const Navigation = () => {
 
       <NavLink
         to="/trending"
-        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                   ${
@@ -39,7 +37,6 @@ const Navigation = () => {
 
       <NavLink
         to="/saved"
-        data-tabs="tabs"
         className={({ isActive }) => {
           return `w-full text-base text-center font-nunito m-2.5                            
                   ${

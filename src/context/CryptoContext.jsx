@@ -12,7 +12,7 @@ export const CryptoProvider = ({ children }) => {
     try {
       const data = await axios
         .get(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=16&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`
         )
         .then((response) => {
         //   console.log("crypto data =>", response.data);
