@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import SearchIcon from "../assets/search-icon.svg";
 import { CryptoContext } from "../context/CryptoContext";
 import debounce from "debounce";
+import { Circles } from "react-loader-spinner";
 
 const SearchInput = ({ handleSearch }) => {
   const [searchText, setSearchText] = useState("");
-  let { searchData } = useContext(CryptoContext);
+  let { searchData, setCoinSearch } = useContext(CryptoContext);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -15,8 +16,12 @@ const SearchInput = ({ handleSearch }) => {
     // console.log(query);
   };
 
+  const selectCoin = (coin) => {
+    setCoinSearch(coin);
+  };
+
   return (
-    <form className="w-96 relative flex items-center m">
+    <form className="w-96 relative flex items-center">
       <input
         className="w-full rounded bg-gray-200 placeholder:text-gray-100 pl-2 required outline-0 border border-transparent focus:border-lightgreen"
         onChange={handleChange}
@@ -35,7 +40,8 @@ const SearchInput = ({ handleSearch }) => {
               return (
                 <li
                   key={coin.id}
-                  className="flex items-center mx-4 my-2 cursor-pointer"
+                  onClick={() => selectCoin(coin.id)}
+                  className="flex items-center  px-4 py-2 hover:bg-gray-200 cursor-pointer"
                 >
                   <img
                     src={coin.large}
@@ -47,7 +53,20 @@ const SearchInput = ({ handleSearch }) => {
               );
             })
           ) : (
-            <h2>Loading...</h2>
+            <Circles
+              height="40"
+              width="40"
+              color="#00ff00"
+              ariaLabel="circles-loading"
+              wrapperStyle={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "60vh",
+              }}
+              wrapperClass=""
+              visible={true}
+            />
           )}
         </ul>
       ) : null}

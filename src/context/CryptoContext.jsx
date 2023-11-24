@@ -6,16 +6,17 @@ export const CryptoContext = createContext({});
 
 // creating the context provider component for passing the data
 export const CryptoProvider = ({ children }) => {
-  
+
   const [cryptoData, setCryptoData] = useState();
   const [searchData, setSearchData] = useState();
+  const [coinSearch, setCoinSearch] = useState("");
 
   // Calling api for cryptoData
   const getCryptoData = async () => {
     try {
       const data = await axios
         .get(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=12&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinSearch}order=market_cap_desc&per_page=12&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`
         )
         .then((response) => {
           //   console.log("crypto data =>", response.data);
@@ -43,10 +44,10 @@ export const CryptoProvider = ({ children }) => {
   useLayoutEffect(() => {
     getCryptoData();
     // getSearchResult();
-  }, []);
+  }, [coinSearch]);
 
   return (
-    <CryptoContext.Provider value={{ cryptoData, searchData, getSearchResult }}>
+    <CryptoContext.Provider value={{ cryptoData, searchData, getSearchResult, setCoinSearch }}>
       {children}
     </CryptoContext.Provider>
   );
