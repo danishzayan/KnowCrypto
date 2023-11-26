@@ -13,7 +13,6 @@ const SearchInput = ({ handleSearch }) => {
     let query = e.target.value;
     setSearchText(query);
     handleSearch(query);
-    // console.log(query);
   };
 
   const selectCoin = (coin) => {
