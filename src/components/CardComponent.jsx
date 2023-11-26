@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CryptoContext } from "../context/CryptoContext";
 
 const CardComponent = () => {
+
   const { cryptoData, currency } = useContext(CryptoContext);
+  const [isActive, setIsActive] = useState(false)
   
+  const handleLike = () => {
+    setIsActive((prevIsActive) => !prevIsActive);
+  };
+
+
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center mt-12">
       {cryptoData
         ? cryptoData.map((data) => (
-            <div key={data.id} className="relative border border-lightgreen py-4 px-6 rounded-3xl w-64 my-4 shadow-xl">
+            <div
+              key={data.id}
+              className="relative border border-lightgreen py-4 px-6 rounded-3xl w-64 my-4 shadow-xl"
+            >
               <div className="flex items-center border overflow-hidden absolute rounded-full py-[1px] px-[1px] shadow-xl bg-lightgreen left-4 -top-7">
                 <img
                   src={data.image}
@@ -26,16 +37,19 @@ const CardComponent = () => {
                   </p>
                   <button className="outline-0 border-0 bg-none cursor-pointer">
                     <svg
-                      
-                      xmlns="http://www.w3.org/2000/svg"
+                      onClick={handleLike}
+                      className=""
+                      title="Like Paperclip Attachment SVG File"
                       width="21"
                       height="21"
                       viewBox="0 0 24 24"
+                      fill={isActive ? '#ff0000' : '#0f172a'}
+                      stroke="#ff0000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     >
-                      <path
-                        d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z"
-                        fill="#ff0000"
-                      />
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
                   </button>
                 </div>
