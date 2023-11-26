@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CryptoContext } from "../context/CryptoContext";
 
 const CardComponent = () => {
-  const { cryptoData } = useContext(CryptoContext);
+  const { cryptoData, currency } = useContext(CryptoContext);
   
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center mt-12">
@@ -44,7 +44,7 @@ const CardComponent = () => {
                   <p className="text-green font-bold">
                     {new Intl.NumberFormat("en-IN", {
                       style: "currency",
-                      currency: "usd",
+                      currency: currency,
                     }).format(data.current_price)}
                   </p>
                 </div>

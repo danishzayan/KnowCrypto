@@ -6,7 +6,7 @@ import { Circles } from "react-loader-spinner";
 
 const SearchInput = ({ handleSearch }) => {
   const [searchText, setSearchText] = useState("");
-  let { searchData, setCoinSearch } = useContext(CryptoContext);
+  let { searchData, setCoinSearch, setSearchData } = useContext(CryptoContext);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -15,12 +15,19 @@ const SearchInput = ({ handleSearch }) => {
     handleSearch(query);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSearch(searchText);
+  }
+
   const selectCoin = (coin) => {
     setCoinSearch(coin);
+    setSearchData();
+    setSearchText("");
   };
 
   return (
-    <form className="w-96 relative flex items-center">
+    <form onSubmit={handleSubmit} className="w-96 relative flex items-center">
       <input
         className="w-full rounded bg-gray-200 placeholder:text-gray-100 pl-2 required outline-0 border border-transparent focus:border-lightgreen"
         onChange={handleChange}
@@ -52,20 +59,18 @@ const SearchInput = ({ handleSearch }) => {
               );
             })
           ) : (
-            <Circles
+            <div className="w-full h-full flex justify-center items-center">
+              <Circles
               height="40"
               width="40"
               color="#00ff00"
               ariaLabel="circles-loading"
-              wrapperStyle={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "60vh",
-              }}
+              wrapperStyle={{}}
               wrapperClass=""
               visible={true}
             />
+            <span className="ml-2">Searching...</span>
+            </div>
           )}
         </ul>
       ) : null}
