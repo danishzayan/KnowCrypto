@@ -18,9 +18,20 @@ export const CryptoProvider = ({ children }) => {
   const getCryptoData = async () => {
     try {
       const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/list`
+      );
+        console.log("crypto list data =>", response.data);
+      setCryptoData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+
+    try {
+      const response = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coinSearch}&order=${sorting}&per_page=16&page=${page}&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`
       );
-        console.log("crypto data =>", response.data);
+        // console.log("crypto data =>", response.data);
       setCryptoData(response.data);
     } catch (error) {
       console.log(error);
@@ -55,6 +66,7 @@ export const CryptoProvider = ({ children }) => {
         setCurrency,
         sorting,
         setSorting,
+        page,
         setPage,
       }}
     >
