@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import SearchIcon from "../assets/search-icon.svg";
 import { CryptoContext } from "../context/CryptoContext";
-import debounce from "debounce";
+import debounce from "lodash.debounce";
 import { Circles } from "react-loader-spinner";
 
 const SearchInput = ({ handleSearch }) => {
@@ -18,11 +18,11 @@ const SearchInput = ({ handleSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(searchText);
-  }
+  };
 
   const selectCoin = (coin) => {
     setCoinSearch(coin);
-    setSearchData();
+    setSearchData([]);
     setSearchText("");
   };
 
@@ -41,7 +41,7 @@ const SearchInput = ({ handleSearch }) => {
       </button>
       {searchText.length > 0 ? (
         <ul className="absolute top-8 right-0 z-50 w-96 h-96 bg-gray-300 overflow-x-hidden border border-slate-600 rounded bg-opacity-60 backdrop-blur-md">
-          {searchData ? (
+          {searchData.length ? (
             searchData.map((coin) => {
               return (
                 <li
@@ -61,15 +61,15 @@ const SearchInput = ({ handleSearch }) => {
           ) : (
             <div className="w-full h-full flex justify-center items-center">
               <Circles
-              height="40"
-              width="40"
-              color="#00ff00"
-              ariaLabel="circles-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-            <span className="ml-2">Searching...</span>
+                height="40"
+                width="40"
+                color="#00ff00"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+              <span className="ml-2">Searching...</span>
             </div>
           )}
         </ul>
