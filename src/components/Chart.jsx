@@ -39,7 +39,7 @@ const ChartComponent = ({ data, currency, type }) => {
         <Line
           type="monotone"
           dataKey={type}
-          stroke="#14ffec"
+          stroke="#00ff00"
           strokeWidth={"1px"}
         />
         <CartesianGrid stroke="#323232" />
@@ -71,8 +71,6 @@ const Chart = ({ id }) => {
         )
           .then((res) => res.json())
           .then((json) => json);
-
-        // console.log("chart-data", data);
 
         let convertedData = data[type].map((item) => {
           return {

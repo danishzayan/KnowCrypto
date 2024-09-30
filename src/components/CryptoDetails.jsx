@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { Circles } from 'react-loader-spinner';
 import ReactDOM from "react-dom";
@@ -481,7 +480,7 @@ const CryptoDetails = () => {
                 wrapperClass=""
                 visible={true}
               />
-              <span className="ml-2">Searching...</span>
+              <span className="ml-2">Loading...</span>
             </div>
         )}
       </div>
