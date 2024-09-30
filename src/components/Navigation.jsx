@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="w-[80%] mt-16 flex justify-around align-middle border border-lightgreen rounded-lg">
+    <nav className="w-[40%] mt-[5.5rem] flex justify-around align-middle border border-lightgreen rounded-lg">
       <NavLink
         to="/"
         end

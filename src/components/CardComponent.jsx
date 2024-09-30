@@ -13,12 +13,12 @@ const CardComponent = () => {
 
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center mt-12">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 w-full md:grid-cols-3 lg:grid-cols-4 place-self-center my-12">
       {cryptoData
         ? cryptoData.map((data) => (
             <div
               key={data.id}
-              className="relative border border-lightgreen py-4 px-6 rounded-3xl w-64 my-4 shadow-xl"
+              className="relative border border-lightgreen py-4 px-6 rounded-3xl w-full my-4 shadow-xl"
             >
               <div className="flex items-center border overflow-hidden absolute rounded-full py-[1px] px-[1px] shadow-xl bg-lightgreen left-4 -top-7">
                 <img
@@ -32,7 +32,7 @@ const CardComponent = () => {
               </span>
               <div className="mt-3">
                 <div className="flex flex-row justify-between items-center">
-                  <p className="text-[1.3rem] font-semibold  my-2">
+                  <p className="text-[1.3rem] truncate font-semibold  my-2">
                     {data.name}
                   </p>
                   <button className="outline-0 border-0 bg-none cursor-pointer">
@@ -113,7 +113,7 @@ const CardComponent = () => {
                 <div className="border-t-2 border-gray-200 mt-2"></div>
                 <div className="flex justify-between mt-2 ">
                   <p className="font-semibold text-[.9rem]">Total Volume:</p>
-                  <p className="font-semibold text-[.9rem]">
+                  <p className="font-semibold text-[.9rem] truncate">
                     {data.total_volume}
                   </p>
                 </div>
