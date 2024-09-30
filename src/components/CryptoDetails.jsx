@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
+import { Circles } from 'react-loader-spinner';
 import ReactDOM from "react-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLayoutEffect } from "react";
@@ -55,11 +56,11 @@ const CryptoDetails = () => {
       onClick={close}
     >
       <div
-        className="w-[65%] h-[75%] bg-gray-300 bg-opacity-75 rounded-lg border-lightgreen text-white relative"
+        className="w-[65%] h-[75%] bg-gray-300 bg-opacity-75 rounded-lg  text-white relative"
         onClick={(e) => e.stopPropagation()}
       >
         {data ? (
-          <div className="flex items-center justify-between h-full w-full p-4">
+          <div className="flex items-center justify-between h-full w-full p-4 border rounded-lg border-lightgreen">
             <div className="flex flex-col w-[45%] h-full pr-2 ">
               <div className="flex w-full items-center">
                 <img
@@ -470,18 +471,18 @@ const CryptoDetails = () => {
             </div>
           </div>
         ) : (
-          <div
-            className="w-full min-h-[60vh] h-full flex justify-center items-center
-             "
-          >
-            <div
-              className="w-8 h-8 border-4 border-cyan rounded-full
-             border-b-gray-200 animate-spin 
-             "
-              role="status"
-            />
-            <span className="ml-2">please wait...</span>
-          </div>
+          <div className="w-full h-full flex justify-center items-center">
+              <Circles
+                height="40"
+                width="40"
+                color="#00ff00"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+              <span className="ml-2">Searching...</span>
+            </div>
         )}
       </div>
     </div>,
