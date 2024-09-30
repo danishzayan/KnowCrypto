@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import BtnIcon from "../assets/submit-icon.svg";
 import { CryptoContext } from "../context/CryptoContext";
 
@@ -18,7 +18,8 @@ const CurrencyExchange = () => {
         onSubmit={handleCurrencySubmit}
         className="relative flex justify-center items-center"
       >
-        <label htmlFor="currency" className="font-bold mr-2">
+        <label htmlFor="currency" className="relative flex justify-center items-center
+          mr-2 font-bold">
           Currency:
         </label>
         <input

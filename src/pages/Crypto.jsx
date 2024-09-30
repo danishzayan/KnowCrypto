@@ -1,4 +1,5 @@
-import React from 'react'
+// import React from 'react'
+import { Outlet } from 'react-router-dom'
 import CardComponent from '../components/CardComponent'
 import Filters from '../components/Filters'
 import Pagination from '../components/Pagination'
@@ -12,6 +13,7 @@ const Crypto = () => {
           <span className='text-[0.9rem]'>Data Provided by <a className='text-lightgreen underline' href="http://www.coingecko.com" rel='noreferrer' target={'_blank'}>CoinGecko-API</a></span>
           <Pagination />
         </div>
+        <Outlet />
     </section>
   )
 }
